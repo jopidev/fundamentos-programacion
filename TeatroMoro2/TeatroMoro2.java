@@ -9,7 +9,7 @@ public class TeatroMoro2 {
 
         System.out.println("Bienvenido al sistema de venta de entradas del Teatro Moro");
 
-        while (continuar) {
+        for (boolean menuActivo = true; menuActivo;) {
             System.out.println("\nMenú principal:");
             System.out.println("1. Comprar entrada");
             System.out.println("2. Salir");
@@ -21,6 +21,7 @@ public class TeatroMoro2 {
             } else if (opcionInput.equals("2")) {
                 System.out.println("Gracias por usar el sistema del Teatro Moro.");
                 continuar = false;
+                menuActivo = false;
             } else {
                 System.out.println("Opción inválida. Intente nuevamente.");
             }
@@ -121,18 +122,16 @@ public class TeatroMoro2 {
 
         boolean respuestaValida = false;
         while (!respuestaValida) {
-            System.out.print("\n¿Desea realizar otra compra? (1 = Sí, 2 = No, 3 = Salir del sistema): ");
-            String respuesta = scanner.nextLine();
+            System.out.print("\n¿Desea realizar otra compra? (Sí / No): ");
+            String respuesta = scanner.nextLine().trim().toLowerCase();
 
-            if (respuesta.equals("1")) {
+            if (respuesta.equals("sí") || respuesta.equals("s")) {
                 respuestaValida = true;
-            } else if (respuesta.equals("2")) {
-                return;
-            } else if (respuesta.equals("3")) {
+            } else if (respuesta.equals("no") || respuesta.equals("n")) {
                 System.out.println("Gracias por su compra.");
                 System.exit(0);
             } else {
-                System.out.println("Opción inválida. Intente nuevamente.");
+                System.out.println("Opción inválida. Debe ingresar 'Sí' o 'No'.");
             }
         }
     }
